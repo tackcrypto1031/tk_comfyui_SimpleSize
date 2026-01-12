@@ -9,6 +9,7 @@ A professional and smart aspect ratio and resolution selector for ComfyUI. This 
 
 - **Multi-Model Support**: Tailored resolution presets for **SD1.5**, **SDXL**, **FLUX**, **QwenImage**, **Zimage**, and **WAN**.
 - **Contextual Filtering**: The tool dynamically filters resolution options based on your selected model and target aspect ratio.
+- **Empty Latent Output**: Added an integrated `latent` output terminal that generates a standard empty latent (1/8 resolution) directly for your samplers.
 - **Smart Ratios**: Supports all common aspect ratios, including `1:1`, `2:3`, `3:2`, `3:4`, `16:9`, `9:16`, `9:21`, and `21:9`.
 - **Clean UI**: Simple dropdown-based interface that prevents configuration errors by only showing valid combinations.
 - **Dynamic Calculation**: For models like **WAN**, resolutions are automatically calculated and sorted for both vertical and horizontal orientations.
@@ -31,7 +32,9 @@ A professional and smart aspect ratio and resolution selector for ComfyUI. This 
 2. **Select Model**: Choose your base model (e.g., `FLUX` or `SDXL`).
 3. **Select Ratio**: Pick your desired aspect ratio (e.g., `16:9`).
 4. **Select Resolution**: The `resolution` dropdown will automatically populate with optimal dimensions for that model and ratio.
-5. **Connect Outputs**: Connect the `width` and `height` outputs to your sampler or latent image node.
+5. **Connect Outputs**: 
+    - `width` & `height`: Connect to your model's resolution or latent image node.
+    - `latent`: Connect directly to the `latent_image` input of your sampler (e.g., KSampler) to use the selected resolution automatically.
 
 ## 📂 Example Workflows
 
