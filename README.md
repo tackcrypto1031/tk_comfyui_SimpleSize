@@ -1,6 +1,9 @@
 # TK ComfyUI SimpleSize
 
+![SimpleSize Sample](https://github.com/tackcrypto1031/tk_comfyui_SimpleSize/raw/main/sample/sample.png)
+
 A professional and smart aspect ratio and resolution selector for ComfyUI. This tool simplifies the process of choosing optimal resolutions for various AI models, ensuring your generations always hit the right pixel counts and aspect ratios.
+
 
 ## 🚀 Key Features
 
