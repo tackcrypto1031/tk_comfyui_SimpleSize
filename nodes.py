@@ -26,6 +26,10 @@ class TK_SimpleSize:
     FUNCTION = "get_size"
     CATEGORY = "TK/SimpleSize"
 
+    @classmethod
+    def VALIDATE_INPUTS(s, **kwargs):
+        return True
+
     def get_size(self, model_name, target_ratio, resolution):
         # The primary source of truth is now 'resolution' which should be "WxH"
         # We can mostly ignore 'target_ratio' in the backend, as 'resolution' contains the exact numbers.

@@ -156,6 +156,17 @@ app.registerExtension({
                             options = [getDims(val)];
                         }
                     } else {
+                        // Logic to auto-correct if current ratio is invalid for selected model
+                        // This handles cases where updateRatios didn't catch it or on first load
+                        if (RESOLUTIONS[model]) {
+                            const validRatios = Object.keys(RESOLUTIONS[model]);
+                            if (validRatios.length > 0) {
+                                ratioWidget.value = validRatios[0];
+                                // Recursively call to populate resolution for the new valid ratio
+                                updateResolutions();
+                                return;
+                            }
+                        }
                         options = ["Select Ratio"];
                     }
 
