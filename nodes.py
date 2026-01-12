@@ -1,3 +1,4 @@
+import torch
 
 class TK_SimpleSize:
     def __init__(self):
@@ -21,8 +22,8 @@ class TK_SimpleSize:
             },
         }
 
-    RETURN_TYPES = ("INT", "INT")
-    RETURN_NAMES = ("width", "height")
+    RETURN_TYPES = ("INT", "INT", "LATENT")
+    RETURN_NAMES = ("width", "height", "latent")
     FUNCTION = "get_size"
     CATEGORY = "TK/SimpleSize"
 
@@ -34,22 +35,28 @@ class TK_SimpleSize:
         # The primary source of truth is now 'resolution' which should be "WxH"
         # We can mostly ignore 'target_ratio' in the backend, as 'resolution' contains the exact numbers.
         
+        w, h = (512, 512) # Default
+
         try:
             # Expected format "WxH" e.g. "1280x720"
             if "x" in resolution:
-                w, h = resolution.split("x")
-                return (int(w.strip()), int(h.strip()))
+                w_str, h_str = resolution.split("x")
+                w, h = int(w_str.strip()), int(h_str.strip())
             
             # Formatting fallback if someone connects a string manually
             # or if the frontend sends the old format "Ratio (WxH)"
-            if "(" in resolution and ")" in resolution:
+            elif "(" in resolution and ")" in resolution:
                  dims = resolution.split("(")[1].split(")")[0]
                  if "x" in dims:
-                    w, h = dims.split("x")
-                    return (int(w.strip()), int(h.strip()))
+                    w_str, h_str = dims.split("x")
+                    w, h = int(w_str.strip()), int(h_str.strip())
 
         except Exception as e:
             print(f"Error parsing resolution: {e}")
 
-        # Fallback default
-        return (512, 512)
+        # Generate empty latent
+        # Latent shape is [batch, channels, height // 8, width // 8]
+        # Standard SD latent channels = 4
+        latent = {"samples": torch.zeros([1, 4, h // 8, w // 8])}
+
+        return (w, h, latent)
