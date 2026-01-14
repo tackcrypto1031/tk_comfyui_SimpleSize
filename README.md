@@ -71,5 +71,11 @@ Contributions are what make the open-source community such an amazing place to l
 * **GitHub**: [tackcrypto1031](https://github.com/tackcrypto1031)
 
 ---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 *Developed with ❤️ by Tack*
 
