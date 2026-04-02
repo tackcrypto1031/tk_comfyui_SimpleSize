@@ -1,0 +1,15 @@
+[project]
+name = "tk_comfyui_SimpleSize"
+description = "A professional and intelligent aspect ratio and resolution selector for ComfyUI, with multi-model optimization and integrated latent output."
+version = "1.0.0"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/tackcrypto1031/tk_comfyui_SimpleSize"
+
+[tool.comfy]
+PublisherId = "tackcrypto1031"
+DisplayName = "TK SimpleSize - Resolution Selector"
+Icon = ""
